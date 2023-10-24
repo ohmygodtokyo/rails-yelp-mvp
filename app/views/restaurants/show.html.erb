@@ -1,0 +1,25 @@
+<div class="container align-items-center mt-5">
+  <h1><%= @restaurant.name %></h1>
+  <p><%= @restaurant.address %></p>
+  <p><%= "+43 #{@restaurant.phone_number}" %></p>
+  <p><%= @restaurant.category %></p>
+  <p><%= link_to "Leave a review", new_restaurant_review_path(@restaurant), class: "btn btn-primary" %></p>
+  <p><%= link_to "Back to restaurants", restaurants_path, class: "btn btn-primary" %></p>
+</div>
+
+<div class="container align-items-center mt-5">
+  <h3><strong>Reviews</strong></h3>
+  <ul class="list-group list-unstyled">
+    <% @restaurant.reviews.each do |review| %>
+      <p>
+        <li class="list-group-item">
+          <% "#{review.rating}".to_i.times do %>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+          <% end %>
+        </li>
+        <li class="list-group-item"><%= review.content %></li>
+      </p>
+    <% end %>
+  </ul>
+  <br>
+</div>
